@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import './App.css';
+import React from 'react';
 import ListProduct from './components/ListProduct';
 import { createStore, applyMiddleware, compose } from 'redux';
 import shoppingCartApp from './reducer';
