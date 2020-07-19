@@ -13,8 +13,9 @@ const ListProduct = (props) => {
 
 
   return (
-    <div>List Product</div>
-  );
+      <div></div>
+  )
+
 };
 
 const mapStateToProps = (state) => ({
