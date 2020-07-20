@@ -7,6 +7,7 @@ let initialState = {
 let products = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_SUCCESS:
+      console.log(action.response, 'res2');
       const listProduct = action.response;
 
       return {
