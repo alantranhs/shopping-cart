@@ -7,7 +7,7 @@ let initialState = {
 let products = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_SUCCESS:
-      const listProduct = action.response.data;
+      const listProduct = action.response;
 
       return {
         ...state,

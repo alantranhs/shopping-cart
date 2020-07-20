@@ -6,11 +6,9 @@ const ListProduct = (props) => {
   useEffect(() => {
     const { getProducts } = props;
     getProducts();
-  }, [props]);
+  }, []);
 
   console.log(props);
-
-
 
   return (
       <div></div>
