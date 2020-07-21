@@ -1,18 +1,17 @@
 import * as types from './../constants/ActiveType'
 
 let initialState = {
-  products: [],
+  data: [],
 };
 
 let products = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_SUCCESS:
-      console.log(action.response, 'res2');
       const listProduct = action.response;
 
       return {
         ...state,
-        products: listProduct
+        data: listProduct
       };
 
     case types.FETCH_FAIL:

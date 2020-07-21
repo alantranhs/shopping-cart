@@ -1,36 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect, useState, useCallback } from 'react';
 import { getProducts } from '../action';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 
-console.log(useSelector, 'useSelector');
-
-const ListProduct = (props) => {
-  const productList = useSelector(state => state.products);
-  console.log(productList, 'productList');
+const ListProduct = () => {
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    props.getProducts();
-    render();
+    dispatch(getProducts());
   }, []);
 
-  const render = () => {
-    console.log(props);
-    console.log(props.products.products, 'props.products.products');
-    console.log(productList);
-  };
-
-
-
+  const productList = useSelector(state => state.products.data);
+  console.log(productList, 'kkk');
 
   return (
       <div></div>
   )
-
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  getProducts: () => dispatch(getProducts()),
-});
-
-export default connect(null, mapDispatchToProps)(ListProduct);
+export default ListProduct;

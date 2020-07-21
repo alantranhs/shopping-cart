@@ -5,7 +5,6 @@ import ProductApi from './../api/productApi'
 export function* getListProduct() {
   try {
     const response = yield call(ProductApi.getAll);
-    console.log(response, 'res1');
     yield put({ type: types.FETCH_SUCCESS, response})
   } catch (error) {
     yield put({type: types.FETCH_FAIL})
