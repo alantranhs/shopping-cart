@@ -1,5 +1,5 @@
 import React from 'react';
-import ListProduct from './components/ListProduct';
+import Shelf from './components/shelf'
 import { createStore, applyMiddleware, compose } from 'redux';
 import shoppingCartApp from './reducer';
 import { Provider } from 'react-redux';
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <div className="App">
-        <ListProduct/>
+        <Shelf/>
       </div>
     </Provider>
   );
