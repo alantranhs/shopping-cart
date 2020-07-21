@@ -16,10 +16,43 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-main {
+main, .App {
   padding: 20px 2%;
   max-width: 1200px;
   margin: 20px auto 0 auto;
+}
+
+.shelf-container-header {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  display: flex;
+
+  .products-found {
+    display: inline-block;
+    flex: 1 1 auto;
+    text-align: left;
+    margin: 10px 0;
+  }
+
+  .sort {
+    display: inline-block;
+  }
+
+  & ~ div {
+    display: flex;
+
+    .filters {
+      flex: 0 0 20%;
+      max-width: 20%;
+    }
+
+    .shelf-container {
+      flex: 0 0 80%;
+      max-width: 80%;
+    }
+  }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -92,19 +125,6 @@ main {
 
       .title {
         margin-bottom: 15px;
-      }
-    }
-
-    .shelf-container-header {
-      .products-found {
-        width: 100%;
-        text-align: center;
-        margin: 10px 0;
-      }
-
-      .sort {
-        width: 100%;
-        text-align: center;
       }
     }
 

@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { getProducts } from '../../action';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import ShelfHeader from "./shelf-header";
 import Product from './products';
+import Filter from "./filter/filter";
 import './style.scss';
 
 const Shelf = () => {
@@ -17,10 +19,14 @@ const Shelf = () => {
 
   return (
     <React.Fragment>
-      <div className="shelf-container">
-        {productList.map(product => (
-          <Product product={product} key={product.id}/>
-        ))}
+      <ShelfHeader productsLength={productList.length}/>
+      <div children="shelf-container-filter">
+        <Filter/>
+        <div className="shelf-container">
+          {productList.map(product => (
+            <Product product={product} key={product.id}/>
+          ))}
+        </div>
       </div>
     </React.Fragment>
   )

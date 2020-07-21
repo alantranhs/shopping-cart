@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import Thumb from "../Thumb";
+import Thumb from "../thumb";
 import PropTypes from 'prop-types';
 
 const Product = ({ product }) => {
-  console.log(product, 'pro')
   return (
     <div
       className="shelf-item"
