@@ -15,11 +15,10 @@ const Shelf = () => {
   }, []);
 
   const productList = useSelector(state => state.products.data);
-  console.log(productList, 'kkk');
 
   return (
     <React.Fragment>
-      <ShelfHeader productsLength={productList.length}/>
+      <ShelfHeader productsLength={productList.length} productList={productList}/>
       <div children="shelf-container-filter">
         <Filter/>
         <div className="shelf-container">

@@ -9,8 +9,8 @@ const Filter = () => {
   return (
     <div className="filters">
       <h4 className="title">Sizes:</h4>
-      {availableSizes.map(size => (
-        <CheckBox label={size}/>
+      {availableSizes.map((size, index) => (
+        <CheckBox label={size} key={index}/>
       ))}
     </div>
   );
