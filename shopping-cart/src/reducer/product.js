@@ -1,5 +1,4 @@
 import * as types from './../constants/ActiveType'
-import {updateSort} from '../action';
 import compare from '../utils';
 
 let initialState = {

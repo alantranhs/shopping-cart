@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { getProducts } from '../../action';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import ShelfHeader from "./shelf-header";
 import Product from './products';
