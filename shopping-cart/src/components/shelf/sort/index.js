@@ -1,8 +1,7 @@
 import React from 'react';
 import SelectBox from '../selectbox';
 import compare from  '../../../utils';
-
-console.log(compare);
+import { useDispatch } from 'react-redux';
 
 const sortBy = [
   { value: '', label: 'Select' },
@@ -10,8 +9,7 @@ const sortBy = [
   { value: 'highestprice', label: 'Highest to lowest' }
 ];
 
-const Sort = (props) => {
-  console.log(props, 'sort');
+const Sort = () => {
   return (
     <div className="sort">
       Order by

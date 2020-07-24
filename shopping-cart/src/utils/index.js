@@ -1,16 +1,14 @@
 const compare = {
-  lowestprice: (a, b) => {
+  'lowestprice': (a, b) => {
     if (a.price < b.price) return -1;
     if (a.price > b.price) return 1;
     return 0;
   },
-  highestprice: (a, b) => {
+  'highestprice': (a, b) => {
     if (a.price > b.price) return -1;
     if (a.price < b.price) return 1;
     return 0;
   }
 };
 
-export default {
-  compare
-};
+export default compare;

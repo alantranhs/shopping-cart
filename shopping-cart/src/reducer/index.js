@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
 import products from './product';
-import sort from './sort'
 
 const shoppingCartApp = combineReducers ({
-  products,
-  sort
+  products
 });
 
 export default shoppingCartApp;
