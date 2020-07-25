@@ -12,3 +12,10 @@ export const updateSort = (sort) => {
     payload: sort
   };
 };
+
+export const filter = (filter) => {
+  return {
+    type: types.FILTER,
+    payload: filter
+  };
+};
