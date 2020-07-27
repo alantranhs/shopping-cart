@@ -29,10 +29,11 @@ let products = (state = initialState, action) => {
       };
 
     case types.FILTER:
+      let sizeChecked = action.payload.map(item => item.isChecked && item.size).filter(Boolean);
+
        const listFilterProduct = initialState.originalData.filter(product => {
-           return product.availableSizes.includes(action.payload);
-         }
-       );
+         return product.availableSizes.some(item => sizeChecked.includes(item))
+       });
 
       return {
         data: listFilterProduct
