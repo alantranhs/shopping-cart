@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from 'prop-types';
 
-const CheckBox = ( { label, isChecked} ) => {
+const CheckBox = ( { label,  handleSelectSize, isChecked } ) => {
   return (
     <div className="filters-available-size">
       <label>
@@ -9,6 +8,7 @@ const CheckBox = ( { label, isChecked} ) => {
           type="checkbox"
           value={label}
           checked={isChecked}
+          onChange={handleSelectSize}
         />
 
         <span className="checkmark">{label}</span>

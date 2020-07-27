@@ -1,16 +1,16 @@
 import * as types from './../constants/ActiveType'
 import compare from '../utils';
 
-const initialState = {
+let initialState = {
+  originalData : [],
   data: [],
-  defaultData: []
 };
 
-const products = (state = initialState, action) => {
+let products = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_SUCCESS:
-      initialState.defaultStatus = action.response;
-      const listProduct = initialState.defaultStatus;
+      initialState.originalData = action.response;
+      const listProduct = initialState.originalData;
 
       return {
         ...state,
@@ -23,10 +23,20 @@ const products = (state = initialState, action) => {
       };
 
     case types.UPDATE_SORT:
-      const listSortProduct = !!action.payload ? [...state.data].sort(compare[action.payload]) : initialState.defaultStatus;
-
+      const listSortProduct = !!action.payload ? [...state.data].sort(compare[action.payload]) : initialState.originalData;
       return {
         data: listSortProduct
+      };
+
+    case types.FILTER:
+      let sizeChecked = action.payload.map(item => item.isChecked && item.size).filter(Boolean);
+
+       const listFilterProduct = initialState.originalData.filter(product => {
+         return product.availableSizes.some(item => sizeChecked.includes(item))
+       });
+
+      return {
+        data: listFilterProduct
       };
 
     default:
