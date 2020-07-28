@@ -7,7 +7,12 @@ const SelectBox = ({ sortBy }) => {
   const dispatch = useDispatch();
 
   const handleSort = (e) => {
-   dispatch(updateSort(e.target.value));
+   const infoSort = {
+     value: e.target.value,
+     type: e.target.value
+   };
+
+   dispatch(updateSort(infoSort));
   };
 
   return (

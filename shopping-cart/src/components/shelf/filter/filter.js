@@ -5,11 +5,10 @@ import './style.scss'
 import CheckBox from '../checkbox/checkbox';
 import { filter } from '../../../action';
 
-const availableSizes = ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'];
+const availableSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 let availableSizesChecked = availableSizes.map(size => ({ size, isChecked: false }));
 
 const Filter = () => {
-  const [allSize, setAllSize] = React.useState(availableSizesChecked);
   const [selectedCheckboxes, setSelectedCheckboxes] = React.useState(new Set());
   const dispatch = useDispatch();
 
@@ -20,9 +19,9 @@ const Filter = () => {
       selectedCheckboxes.add(label);
     }
 
-    console.log(Array.from(selectedCheckboxes), 'Array.from(selectedCheckboxes)');
+    setSelectedCheckboxes(selectedCheckboxes);
 
-    dispatch(filter(Array.from(selectedCheckboxes)));
+    dispatch(filter(Array.from(selectedCheckboxes).length > 0 ? Array.from(selectedCheckboxes) : availableSizes));
   };
 
 

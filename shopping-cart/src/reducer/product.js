@@ -4,6 +4,7 @@ import compare from '../utils';
 let initialState = {
   originalData : [],
   data: [],
+  typeSort: ''
 };
 
 let products = (state = initialState, action) => {
@@ -23,18 +24,22 @@ let products = (state = initialState, action) => {
       };
 
     case types.UPDATE_SORT:
-      const listSortProduct = !!action.payload ? [...state.data].sort(compare[action.payload]) : initialState.originalData;
+      const listSortProduct = !!action.payload ? [...state.data].sort(compare[action.payload.value]) : initialState.originalData;
+
       return {
-        data: listSortProduct
+        ...state,
+        data: listSortProduct,
+        typeSort: action.payload.type
       };
 
     case types.FILTER:
-       const listFilterProduct = initialState.originalData.filter(product => {
-         return product.availableSizes.some(item => action.payload.includes(item))
+       const listFilterProduct = [...state.originalData].sort(compare[action.payload.value]).filter(product => {
+         return product.availableSizes.some(item => action.payload.includes(item));
        });
 
       return {
-        data: listFilterProduct
+        ...state,
+        data: listFilterProduct,
       };
 
     default:
