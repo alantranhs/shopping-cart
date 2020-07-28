@@ -24,7 +24,7 @@ let products = (state = initialState, action) => {
       };
 
     case types.UPDATE_SORT:
-      const listSortProduct = !!action.payload ? [...state.data].sort(compare[action.payload.value]) : initialState.originalData;
+      const listSortProduct = !!action.payload.type ? [...state.data].sort(compare[action.payload.type]) : initialState.originalData;
 
       return {
         ...state,
@@ -33,7 +33,7 @@ let products = (state = initialState, action) => {
       };
 
     case types.FILTER:
-       const listFilterProduct = [...state.originalData].sort(compare[action.payload.value]).filter(product => {
+       const listFilterProduct = [...state.originalData].sort(compare[state.typeSort]).filter(product => {
          return product.availableSizes.some(item => action.payload.includes(item));
        });
 
