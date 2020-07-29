@@ -5,6 +5,7 @@ import shoppingCartApp from './reducer';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { shoppingCartSaga } from './saga';
+import FloatCart from './components/floatCart';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -22,6 +23,8 @@ const App = () => {
     <Provider store={store}>
       <div className="App">
         <Shelf/>
+
+        <FloatCart />
       </div>
     </Provider>
   );
