@@ -3,18 +3,12 @@ import './style.scss';
 
 const FloatCart = () => {
   return (
-    <div>
-        <div
-          onClick={() => this.closeFloatCart()}
-          className="float-cart__close-btn"
-        >
+    <div className="float-cart">
+        <div className="float-cart__close-btn">
           X
         </div>
 
-        <span
-          onClick={() => this.openFloatCart()}
-          className="bag bag--float-cart-closed"
-        >
+        <span className="bag bag--float-cart-closed">
             <span className="bag__quantity"></span>
         </span>
 
@@ -43,7 +37,7 @@ const FloatCart = () => {
                 </span>
             </small>
           </div>
-          <div onClick={() => this.proceedToCheckout()} className="buy-btn">
+          <div className="buy-btn">
             Checkout
           </div>
         </div>
