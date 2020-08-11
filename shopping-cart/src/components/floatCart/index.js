@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import './style.scss';
 
 const FloatCart = () => {
+  const [openBox, setOpenBox] = React.useState(false);
+
+  const handleOpenBox = () => {
+    setOpenBox(!openBox);
+  };
+
   return (
-    <div className="float-cart">
-        <div className="float-cart__close-btn">
+    <div className={`float-cart ${openBox ? 'float-cart--open' : ''}`}>
+        <div className="float-cart__close-btn" onClick={handleOpenBox}>
           X
         </div>
-
-        <span className="bag bag--float-cart-closed">
+        ${!openBox &&
+          <span className="bag bag--float-cart-closed" onClick={handleOpenBox}>
             <span className="bag__quantity"></span>
-        </span>
+          </span>
+        }
 
       <div className="float-cart__content">
         <div className="float-cart__header">
