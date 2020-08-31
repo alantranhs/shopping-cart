@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import './style.scss'
 import CheckBox from '../checkbox/checkbox';

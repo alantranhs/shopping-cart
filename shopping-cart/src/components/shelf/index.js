@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
 import { getProducts } from '../../action';
 import { useSelector, useDispatch } from 'react-redux';
-import ShelfHeader from "./shelf-header";
+import ShelfHeader from './shelf-header';
 import Product from './products';
 import Filter from "./filter/filter";
 import './style.scss';
 
 const Shelf = () => {
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProducts());
-  }, []);
+  }, [dispatch]);
 
   const productList = useSelector(state => state.products.data);
 

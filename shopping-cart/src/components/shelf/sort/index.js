@@ -1,7 +1,5 @@
 import React from 'react';
 import SelectBox from '../selectbox';
-import compare from  '../../../utils';
-import { useDispatch } from 'react-redux';
 
 const sortBy = [
   { value: '', label: 'Select' },

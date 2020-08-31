@@ -13,6 +13,13 @@ export const updateSort = (sort) => {
   };
 };
 
+export const addProductToCart = (product) => {
+  return {
+    type: types.ADD_PRODUCT_TO_CART,
+    payload: product
+  };
+};
+
 export const filter = (filter) => {
   return {
     type: types.FILTER,

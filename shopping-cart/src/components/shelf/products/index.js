@@ -1,8 +1,17 @@
-import React, { useEffect } from 'react';
-import Thumb from "../thumb";
+import React from 'react';
+import Thumb from '../thumb';
+import { addProductToCart } from '../../../action';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Product = ({ product }) => {
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    const id = product.id;
+    dispatch(addProductToCart(id))
+  };
+
   return (
     <div
       className="shelf-item"
@@ -24,7 +33,7 @@ const Product = ({ product }) => {
           {product.currencyFormat}{product.price}
         </div>
       </div>
-      <div className="shelf-item__buy-btn">Add to cart</div>
+      <div className="shelf-item__buy-btn" id={product.id} onClick={addToCart}>Add to cart</div>
     </div>
   )
 };

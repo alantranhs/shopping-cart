@@ -4,6 +4,7 @@ import compare from '../utils';
 let initialState = {
   originalData : [],
   data: [],
+  cartProducts: [],
   typeSort: ''
 };
 
@@ -41,6 +42,13 @@ let products = (state = initialState, action) => {
         ...state,
         data: listFilterProduct,
       };
+
+    case types.ADD_PRODUCT_TO_CART:
+      const productToCart = [...state.data].filter(item => (item.id === action.payload));
+      state.cartProducts = [...state.cartProducts, productToCart];
+      return {
+      ...state,
+    };
 
     default:
       return state;
