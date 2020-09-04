@@ -1,25 +1,34 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import ItemDetail from './itemDetail';
 
-const ShelfItem = (props) => {
+const ShelfItem = () => {
+  let cartProducts = useSelector(state => (state.products.cartProducts));
+
+  let products = cartProducts.reduce(function(acc, current) {
+    let isElemExist = acc.findIndex(function(item) {
+      return item.id === current.id;
+    });
+
+    if (isElemExist === -1) {
+      let obj = {};
+      obj = current;
+      obj.count = 1;
+      acc.push(obj)
+    } else {
+      acc[isElemExist].count += 1
+    }
+
+    return acc;
+  }, []);
+
+
   return (
     <React.Fragment>
-      <p className="shelf-empty">Add some products in the cart !</p>
-      <div className="shelf-item">
-        <div className="shelf-item__del"></div>
-        <div className="shelf-item__thumb"></div>
-        <div className="shelf-item__details">
-          <p className="title"> Sphynx Tie Dye Wine T-Shirt </p>
-          <p className="desc">
-            X | Front tie dye print<br/>Quantity: 5
-          </p>
-        </div>
-        <div className="shelf-item__price"><p>$ 9.00</p>
-          <div>
-            <button className="change-product-button">-</button>
-            <button className="change-product-button">+</button>
-          </div>
-        </div>
-      </div>
+      {products.length > 0 ?
+        products.map((product, index) =>(<ItemDetail product={product} key={index}/>)) :
+        <p className="shelf-empty">Add some products in the cart !</p>
+      }
     </React.Fragment>
   )
 };

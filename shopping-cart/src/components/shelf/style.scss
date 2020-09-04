@@ -27,7 +27,8 @@
   }
 
   .shelf-item {
-    //float: left;
+    display: flex;
+    flex-direction: column;
     max-width: 25%;
     flex: 0 0 25%;
     position: relative;
@@ -58,6 +59,7 @@
     }
 
     &__thumb {
+      flex: 1 1 auto;
       img {
         width: 100%;
       }

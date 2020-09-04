@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Thumb from '../thumb';
 import { addProductToCart } from '../../../action';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Product = ({ product }) => {
+const Product = (props) => {
+  const { product } = props;
   const dispatch = useDispatch();
+  const cartProducts = useSelector(state => state.products.cartProducts);
 
   const addToCart = () => {
-    const id = product.id;
-    dispatch(addProductToCart(id))
+    let productAlreadyAdd = false;
+    product.quantity = 1;
+    cartProducts.forEach((item, index) => {
+      if(item.id === product.id) {
+        productAlreadyAdd = true
+      }
+    });
+
+    if (productAlreadyAdd) {
+      product.quantity = product.quantity + 1;
+    }
+
+    dispatch(addProductToCart(product))
   };
 
   return (

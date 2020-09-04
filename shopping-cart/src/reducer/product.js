@@ -44,11 +44,43 @@ let products = (state = initialState, action) => {
       };
 
     case types.ADD_PRODUCT_TO_CART:
-      const productToCart = [...state.data].filter(item => (item.id === action.payload));
-      state.cartProducts = [...state.cartProducts, productToCart];
+      let product = action.payload;
+      console.log(product);
+      let products = state.cartProducts.map(item =>{
+        if(product.id === item.id) {
+          return item.quantity = product.quantity;
+        }
+
+        return item;
+      });
+
+      console.log(state.cartProducts);
+
       return {
       ...state,
+      cartProducts: [...state.cartProducts, products]
     };
+
+    case types.REMOVE_PRODUCT_TO_CART:
+      const remainingProducts = [...state.cartProducts].filter(item => (item.id !== action.payload));
+
+      return {
+        ...state,
+        cartProducts: remainingProducts
+      };
+
+    case types.INCREASE_PRODUCT_TO_BY:
+      let productFilterToIncrease = [...state.cartProducts].filter(item => (item.id === action.payload));
+      console.log(productFilterToIncrease);
+      if(productFilterToIncrease.count > 0 && productFilterToIncrease.count) {
+        productFilterToIncrease.count = productFilterToIncrease.count + 1
+      } else {
+        productFilterToIncrease = [...state.cartProducts].filter(item => (item.id !== action.payload))
+      }
+
+      return {
+        ...state
+      };
 
     default:
       return state;

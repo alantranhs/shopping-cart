@@ -18,12 +18,11 @@ const FloatCart = () => {
       <div className="float-cart__close-btn" onClick={handleOpenBox}>
         X
       </div>
-      ${!openBox &&
+      {!openBox &&
     <div className="bag bag--float-cart-closed" onClick={handleOpenBox}>
       <span className="bag__quantity">{listProductsCart.length}</span>
     </div>
     }
-
       <div className="float-cart__content">
         <div className="float-cart__header">
             <span className="bag">

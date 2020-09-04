@@ -20,6 +20,28 @@ export const addProductToCart = (product) => {
   };
 };
 
+export const removeProductToCart = (product) => {
+  return {
+    type: types.REMOVE_PRODUCT_TO_CART,
+    payload: product
+  };
+};
+
+export const increaseProductToBy = (product) => {
+  return {
+    type: types.INCREASE_PRODUCT_TO_BY,
+    payload: product
+  };
+};
+
+export const decreaseProductToBy = (product) => {
+  return {
+    type: types.DECREASE_PRODUCT_TO_BY,
+    payload: product
+  };
+};
+
+
 export const filter = (filter) => {
   return {
     type: types.FILTER,
