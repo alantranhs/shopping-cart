@@ -10,11 +10,17 @@ const ItemDetail = ({ product }) => {
   };
 
   const handleIncreaseProductToBy = () => {
-    dispatch(increaseProductToBy(product.id));
+    product.quantity = product.quantity + 1;
+    dispatch(increaseProductToBy(product));
   };
 
   const handleDecreaseProductToBy = () => {
-    dispatch(decreaseProductToBy(product.id));
+    product.quantity = product.quantity - 1;
+    if(product.quantity <= 0) {
+      handleRemoveProductFormCart();
+    } else {
+      dispatch(decreaseProductToBy(product));
+    }
   };
 
   return (

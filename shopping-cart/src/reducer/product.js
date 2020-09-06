@@ -71,16 +71,29 @@ let products = (state = initialState, action) => {
       };
 
     case types.INCREASE_PRODUCT_TO_BY:
-      let productFilterToIncrease = [...state.cartProducts].filter(item => (item.id === action.payload));
-      console.log(productFilterToIncrease);
-      if(productFilterToIncrease.count > 0 && productFilterToIncrease.count) {
-        productFilterToIncrease.count = productFilterToIncrease.count + 1
-      } else {
-        productFilterToIncrease = [...state.cartProducts].filter(item => (item.id !== action.payload))
+      let productsAfterIncrease = action.payload;
+
+      let indexProductIn = state.cartProducts.map(function(element) { return element.id; }).indexOf(productsAfterIncrease.id);
+      if (indexProductIn !== -1) {
+        state.cartProducts[indexProductIn] = productsAfterIncrease;
       }
 
       return {
-        ...state
+        ...state,
+        cartProducts: [...state.cartProducts]
+      };
+
+    case types.DECREASE_PRODUCT_TO_BY:
+      let productsAfterDecrease = action.payload;
+
+      let indexProductDe = state.cartProducts.map(function(element) { return element.id; }).indexOf(productsAfterDecrease.id);
+      if (indexProductDe !== -1) {
+        state.cartProducts[indexProductDe] = productsAfterDecrease;
+      }
+
+      return {
+        ...state,
+        cartProducts: [...state.cartProducts]
       };
 
     default:
