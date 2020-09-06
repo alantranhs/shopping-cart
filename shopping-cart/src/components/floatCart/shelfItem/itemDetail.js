@@ -24,10 +24,11 @@ const ItemDetail = ({ product }) => {
       <div className="shelf-item__details">
         <p className="title"> {product.style} </p>
         <p className="desc">
-          {product.description}
+          {product.description} <br/>
+          <span>quantity: {product.quantity}</span>
         </p>
       </div>
-      <div className="shelf-item__price"><p>{product.count} X $ {product.price}</p>
+      <div className="shelf-item__price"><p>$ {parseFloat(product.price) * product.quantity}</p>
         <div>
           <button className="change-product-button" onClick={handleDecreaseProductToBy}>-</button>
           <button className="change-product-button" onClick={handleIncreaseProductToBy}>+</button>

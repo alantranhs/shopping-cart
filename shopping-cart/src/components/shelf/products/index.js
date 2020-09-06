@@ -6,20 +6,27 @@ import PropTypes from 'prop-types';
 
 const Product = (props) => {
   const { product } = props;
+  let [productQuantity, setProductQuantity] = useState(1);
   const dispatch = useDispatch();
   const cartProducts = useSelector(state => state.products.cartProducts);
 
   const addToCart = () => {
     let productAlreadyAdd = false;
-    product.quantity = 1;
-    cartProducts.forEach((item, index) => {
-      if(item.id === product.id) {
-        productAlreadyAdd = true
-      }
-    });
+
+    if (cartProducts.length > 0) {
+      cartProducts.forEach((item, index) => {
+        if(item.id === product.id) {
+          productAlreadyAdd = true;
+        }
+      });
+    }
+
+    setProductQuantity(productQuantity + 1);
 
     if (productAlreadyAdd) {
-      product.quantity = product.quantity + 1;
+      product.quantity = productQuantity;
+    } else {
+      product.quantity = 1;
     }
 
     dispatch(addProductToCart(product))

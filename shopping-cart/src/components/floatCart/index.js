@@ -11,7 +11,13 @@ const FloatCart = () => {
     setOpenBox(!openBox);
   };
 
-  const listProductsCart = useSelector(state => state.products.cartProducts);
+  let listProductsCart = useSelector(state => state.products.cartProducts);
+  let numberProductsCart = 0;
+  if (listProductsCart.length > 0) {
+    numberProductsCart = listProductsCart.reduce((acc, crr) => {
+      return acc + crr.quantity;
+    }, 0);
+  }
 
   return (
     <div className={`float-cart ${openBox ? 'float-cart--open' : ''}`}>
@@ -20,13 +26,13 @@ const FloatCart = () => {
       </div>
       {!openBox &&
     <div className="bag bag--float-cart-closed" onClick={handleOpenBox}>
-      <span className="bag__quantity">{listProductsCart.length}</span>
+      <span className="bag__quantity">{numberProductsCart}</span>
     </div>
     }
       <div className="float-cart__content">
         <div className="float-cart__header">
             <span className="bag">
-              <span className="bag__quantity">{listProductsCart.length}</span>
+              <span className="bag__quantity">{numberProductsCart}</span>
             </span>
           <span className="header-title">Bag</span>
         </div>
@@ -36,7 +42,7 @@ const FloatCart = () => {
         </div>
 
         <div className="float-cart__footer">
-          <SubTotal/>
+          <SubTotal cartProducts={listProductsCart}/>
         </div>
       </div>
     </div>

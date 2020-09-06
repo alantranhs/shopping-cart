@@ -45,20 +45,21 @@ let products = (state = initialState, action) => {
 
     case types.ADD_PRODUCT_TO_CART:
       let product = action.payload;
-      console.log(product);
-      let products = state.cartProducts.map(item =>{
-        if(product.id === item.id) {
-          return item.quantity = product.quantity;
-        }
+      let newListProduct = [];
+      let productsAdded = [];
 
-        return item;
-      });
+      if (state.cartProducts.length > 0) {
+        productsAdded = state.cartProducts.filter(item => (item.id === product.id));
+      }
 
-      console.log(state.cartProducts);
+      if(productsAdded.length > 0 && state.cartProducts.length > 0) {
+        state.cartProducts.pop();
+      }
 
+      newListProduct = [...state.cartProducts, product];
       return {
       ...state,
-      cartProducts: [...state.cartProducts, products]
+      cartProducts: newListProduct
     };
 
     case types.REMOVE_PRODUCT_TO_CART:

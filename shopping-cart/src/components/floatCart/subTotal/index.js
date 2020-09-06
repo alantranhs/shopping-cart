@@ -1,14 +1,16 @@
 import React from 'react';
 
-const SubTotal = () => {
+const SubTotal = ({cartProducts}) => {
+  let sum = 0;
+  if (cartProducts.length > 0) {
+    sum = cartProducts.reduce((sum, cartItem) => (sum + cartItem.quantity * parseFloat(cartItem.price)), 0);
+  }
+
   return (
     <React.Fragment>
       <div className="sub">SUBTOTAL</div>
       <div className="sub-price">
-        <p className="sub-price__val">$ 27.00</p>
-        <small className="sub-price__installment">
-          <span>OR UP TO 3 x $ 9.00</span>
-        </small>
+        <p className="sub-price__val">$ {sum}</p>
       </div>
       <div className="buy-btn">
         Checkout
