@@ -5,6 +5,7 @@ import ShelfHeader from './shelf-header';
 import Product from './products';
 import Filter from './filter/filter';
 import './style.scss';
+import Pagination from '../pagination';
 
 const Shelf = () => {
 
@@ -25,6 +26,7 @@ const Shelf = () => {
           {productList.map(product => (
             <Product product={product} key={product.id}/>
           ))}
+          <Pagination products={productList}/>
         </div>
       </div>
     </React.Fragment>

@@ -1,11 +1,13 @@
 import React from 'react';
-import Shelf from './components/shelf'
+import Shelf from './components/shelf';
+import FloatCart from './components/floatCart';
+
 import { createStore, applyMiddleware, compose } from 'redux';
 import shoppingCartApp from './reducer';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { shoppingCartSaga } from './saga';
-import FloatCart from './components/floatCart';
+
 
 const sagaMiddleware = createSagaMiddleware();
 
