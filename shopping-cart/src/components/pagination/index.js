@@ -1,25 +1,29 @@
 import React from 'react';
 import './style.scss';
 
-const Pagination = ({products}) => {
-  console.log(products);
+const Pagination = (props) => {
+  const { productsPerPage, currentPage, paginate, totalProducts } = props;
+
+  let pageNumbers = [];
+  for (let i = 0; i < Math.ceil(totalProducts / productsPerPage); i++) {
+    pageNumbers.push(i)
+  }
+
   return (
     <div className="pagination">
       <ul>
-        <li className="false">Prev</li>
-        <li className="false">1</li>
-        <li className="false">2</li>
-        <li className="active">3</li>
-        <li className="false">4</li>
-        <li className="false">5</li>
-        <li className="false">6</li>
-        <li className="false">7</li>
-        <li className="false">8</li>
-        <li className="false">9</li>
-        <li className="false">Next</li>
+        {currentPage === 1 ? '' : (
+          <li className="false"  onClick={() => paginate(currentPage-1)}>Prev</li>
+        )}
+        {pageNumbers.map((item, index) => (
+           <li className={currentPage === item+1 ? 'true active' : 'false'} key={index}  onClick={() => paginate(item+1)}>{item+1}</li>
+         ))
+        }
+        {currentPage === pageNumbers.pop() + 1 ? '' : (
+          <li className="false"  onClick={() => paginate(currentPage+1)}>Next</li>
+        )}
       </ul>
     </div>
   )
 };
-
 export default Pagination
