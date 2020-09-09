@@ -20,7 +20,7 @@ const Shelf = () => {
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentPages = productList.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProductsOfPages = productList.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
 
@@ -30,7 +30,7 @@ const Shelf = () => {
       <div children="shelf-container-filter">
         <Filter/>
         <div className="shelf-container">
-          {currentPages.map(product => (
+          {currentProductsOfPages.map(product => (
             <Product product={product} key={product.id}/>
           ))}
           <Pagination
