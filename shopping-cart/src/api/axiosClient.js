@@ -3,7 +3,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 const axiosClient = axios.create({
-  baseURL: 'https://5f0ce8ef11b7f600160563bc.mockapi.io/api',
+  baseURL: 'http://localhost:5000/api/',
   headers: {
     'content-type': 'application/json'
   },
